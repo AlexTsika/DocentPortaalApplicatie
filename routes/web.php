@@ -38,12 +38,12 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/about', function () {
     $aboutPage = App\Models\Page::find(2);
     return view('about', compact('aboutPage'));
-});
+})->name('about');
 
 Route::get('/faq', function () {
     $faqPage = App\Models\Page::find(1);
     return view('faq', compact('faqPage'));
-});
+})->name('faq');
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/contact', function () {
