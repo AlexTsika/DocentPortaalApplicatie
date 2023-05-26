@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+
 <head>
     <title>OpenStreetMap</title>
     <style>
@@ -54,4 +53,6 @@
         map.addLayer(vectorLayer);
     </script>
 </body>
-</html>
+
+
+
