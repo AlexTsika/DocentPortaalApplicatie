@@ -115,7 +115,7 @@
                         </div>
     
                         <div class="mb-3 row">
-                            <label for="codecity" class="col-md-4 col-form-label text-md-end text-start">Postcode</label>
+                            <label for="codecity" class="col-md-4 col-form-label text-md-end text-start">Postcode + gemeente</label>
                             <div class="col-md-6">
                               <input type="codecity" class="form-control @error('codecity') is-invalid @enderror" id="codecity" name="codecity" value="{{ old('codecity') }}">
                                 @if ($errors->has('codecity'))

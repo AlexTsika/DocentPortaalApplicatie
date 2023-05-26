@@ -44,7 +44,7 @@ class RegisterController extends Controller
         // Regular expressions
         $nameRegex = '/^[A-Za-z\s]+$/';
         $streetNrRegex = '/^[A-Za-z0-9\s]+$/';
-        $codeCityRegex = '/^\d{4}$/';
+        
 
         $request->validate([
             'name' => "required|string|regex:$nameRegex|max:250",
@@ -57,10 +57,9 @@ class RegisterController extends Controller
             'location' => 'required|integer',
             'category' => 'required|integer',
             'streetnr' => "required|string|regex:$streetNrRegex",
-            'codecity' => "required|string|regex:$codeCityRegex",
+            'codecity' => "required|string",
         ]);
        
-        dd($request);
 
         Teacher::create([
             'lastname' => $request->name,
