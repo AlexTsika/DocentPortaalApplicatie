@@ -1,13 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UsersController;
-use App\Http\Controllers\SearchController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Auth\RegisterController;
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -20,12 +14,11 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
+Route::get('/', function () {
+    return view('welcome');
+});
 
-// });
-
-Route::controller(RegisterController::class)->group(function () {
+Route::controller(RegisterController::class)->group(function() {
     Route::get('/register', 'register')->name('register');
     Route::post('/store', 'store')->name('store');
 });

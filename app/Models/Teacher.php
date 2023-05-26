@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Location;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Teacher extends Model implements Searchable
+class Teacher extends Model
 {
-    public function getSearchResult(): SearchResult
-    {
-        $url = route('teachers.show', $this->id);
+    use HasFactory;
 
     public function location()
     {
@@ -44,4 +44,8 @@ class Teacher extends Model implements Searchable
     {
         return $query->where('lastname', 'LIKE', '%' . $term . '%');
     }
+}
+        'codecity',
+        'streetnr',
+    ];
 }
