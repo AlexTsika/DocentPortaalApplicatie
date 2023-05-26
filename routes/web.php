@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsersController;
+
 use App\Http\Controllers\Auth\RegisterController;
 
 /*
@@ -26,3 +28,10 @@ Route::controller(RegisterController::class)->group(function() {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// DataTable
+Route::get('/users', [UsersController::class, 'index'])->name('users.index');
