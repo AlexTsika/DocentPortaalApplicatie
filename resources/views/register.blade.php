@@ -55,7 +55,7 @@
                     <div class="mb-3 row">
                         <label for="phone" class="col-md-4 col-form-label text-md-end text-start">Telefoon</label>
                         <div class="col-md-6">
-                          <input type="phone" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{ old('phone') }}">
+                            <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}">
                             @if ($errors->has('phone'))
                                 <span class="text-danger">{{ $errors->first('phone') }}</span>
                             @endif
@@ -125,3 +125,19 @@
 
 
 
+<script>
+    // Phone number validation using JavaScript
+    var phoneInput = document.getElementById('phone');
+
+    phoneInput.addEventListener('input', function () {
+        var phoneRegex = /^(\+32\s?|0)([0-9]{2,3}\s?){3}[0-9]{2}$/;
+        var phoneNumber = phoneInput.value;
+        var isValid = phoneRegex.test(phoneNumber);
+
+        if (!isValid) {
+            phoneInput.classList.add('is-invalid');
+        } else {
+            phoneInput.classList.remove('is-invalid');
+        }
+    });
+</script>

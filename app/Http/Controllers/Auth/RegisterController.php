@@ -16,6 +16,7 @@ class RegisterController extends Controller
 {
 
 
+
     /**
      * Display a registration form.
      *
@@ -40,21 +41,25 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
+        // Regular expressions
+        $nameRegex = '/^[A-Za-z\s]+$/';
+        $streetNrRegex = '/^[A-Za-z0-9\s]+$/';
+        $codeCityRegex = '/^\d{4}$/';
+
         $request->validate([
-            'name' => 'required|string|max:250',
-            'firstname' => 'required|string|max:250',
+            'name' => "required|string|regex:$nameRegex|max:250",
+            'firstname' => "required|string|regex:$nameRegex|max:250",
             'email' => 'required|email|max:250|unique:users',
-            'description' => 'required|string|max:250',
+            'description' => "required|string|regex:$nameRegex|max:250",
             'remarks' => 'nullable|string|max:250',
-            'phone' => 'required|string|max:9999999999',
+            'phone' => "required",
             'website' => 'nullable|string',
             'location' => 'required|integer',
             'category' => 'required|integer',
-            'streetnr' => 'required|string',
-            'codecity' => 'required|string',
+            'streetnr' => "required|string|regex:$streetNrRegex",
+            'codecity' => "required|string|regex:$codeCityRegex",
         ]);
-
-
+    
         Teacher::create([
             'lastname' => $request->name,
             'firstname' => $request->firstname,
@@ -70,6 +75,7 @@ class RegisterController extends Controller
             'codecity' => $request->codecity,
         ]);
 
+        
         Mail::send('mail.contact', $request->all(), function($message){
             $message->to(request('email'))
             ->subject('Bedankt voor uw registratie, '. request('firstname').'.');

@@ -39,12 +39,12 @@ Route::get('/teacher/{id}', [SearchController::class, 'show'])->name('teacher.sh
 Route::get('/about', function () {
     $aboutPage = App\Models\Page::find(2);
     return view('about', compact('aboutPage'));
-});
+})->name('about');
 
 Route::get('/faq', function () {
     $faqPage = App\Models\Page::find(1);
     return view('faq', compact('faqPage'));
-});
+})->name('faq');
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/contact', function () {
@@ -56,3 +56,8 @@ Route::get('/map', 'App\Http\Controllers\MapController@showMap');
 
 
 Route::get('/', [WelcomeController::class, 'index'])->name('teachers.index');
+
+Route::get('/test', function(){
+    $teacher = App\Models\Teacher::with('location')->findOrFail(26);
+    dd($teacher->location->name);
+});
