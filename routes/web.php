@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SearchController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/search/users', [SearchController::class, 'searchUsers'])->name('search.users');
