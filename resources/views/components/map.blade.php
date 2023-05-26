@@ -1,4 +1,4 @@
-<div id="map"></div>
+{{-- <div id="map"></div>
 <script>
     var latitude = {{ $latitude }};
     var longitude = {{ $longitude }};
@@ -13,20 +13,19 @@
     L.marker([latitude, longitude]).addTo(map);
 </script>
 
-    <script src="{{ asset('js/ol.js') }}"></script>
-    <script>
-        var map = new ol.Map({
-            target: 'map',
-            layers: [
-                new ol.layer.Tile({
-                    source: new ol.source.OSM()
-                })
-            ],
-            view: new ol.View({
-                center: ol.proj.fromLonLat([0, 0]),
-                zoom: 2
+<script src="{{ asset('js/ol.js') }}"></script>
+
+<script>
+    var map = new ol.Map({
+        target: 'map',
+        layers: [
+            new ol.layer.Tile({
+                source: new ol.source.OSM()
             })
-        });
-    </script>
-</body>
-</html>
+        ],
+        view: new ol.View({
+            center: ol.proj.fromLonLat([0, 0]),
+            zoom: 2
+        })
+    });
+</script> --}}

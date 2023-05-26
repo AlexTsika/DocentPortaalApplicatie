@@ -11,12 +11,12 @@
                 <button class="btn btn-primary mt-5 mb-5">Contact Me</button>
             </div>
         </div>
-        <div class="row">
+        {{-- <div class="row">
             <div class="col">
                 @component('components.map')
                 @endcomponent
             </div>
-        </div>
+        </div> --}}
     </div>
 
 

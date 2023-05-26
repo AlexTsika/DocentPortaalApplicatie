@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\Location;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
@@ -14,7 +14,19 @@ class Teacher extends Model implements Searchable
     {
         $url = route('teachers.show', $this->id);
 
-    public function location()
+        return new SearchResult(
+            $this,
+            $this->lastname,
+            $url
+        );
+    }
+
+    public function scopeSearch($query, $term)
+    {
+        return $query->where('lastname', 'LIKE', '%' . $term . '%');
+    }
+
+    public function location(): BelongsTo
     {
         return $this->belongsTo(Location::class);
     }
@@ -32,16 +44,4 @@ class Teacher extends Model implements Searchable
         'location_id',
         'category_id',
     ];
-}
-        return new SearchResult(
-            $this,
-            $this->lastname,
-            $url
-        );
-    }
-
-    public function scopeSearch($query, $term)
-    {
-        return $query->where('lastname', 'LIKE', '%' . $term . '%');
-    }
 }

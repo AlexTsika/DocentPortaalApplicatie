@@ -6,6 +6,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\LocationController;
 
 
 
@@ -35,11 +36,16 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::get('/teacher/{id}', [SearchController::class, 'show'])->name('teacher.show');
+
+Route::get('/location/{id}', [LocationController::class, 'show'])->name('location.show');
+
 //pages routes
 Route::get('/about', function () {
     $aboutPage = App\Models\Page::find(2);
     return view('about', compact('aboutPage'));
 })->name('about');
+
+Route::get('/location/{id}', [LocationController::class, 'show'])->name('location.show');
 
 Route::get('/faq', function () {
     $faqPage = App\Models\Page::find(1);
