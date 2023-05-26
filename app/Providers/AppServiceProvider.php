@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('map', function ($app) {
+            return new Map();
+        });
     }
 
     /**

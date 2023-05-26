@@ -24,3 +24,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 // MAP
 Route::get('/map', 'App\Http\Controllers\MapController@showMap');
+
+// SHOW MAP
+Route::get('/show', function () {
+    return view('show_map');
+});
