@@ -3,8 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TeachersController;
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Auth\RegisterController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +20,10 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+
+// });
 
 Route::controller(RegisterController::class)->group(function () {
     Route::get('/register', 'register')->name('register');
@@ -40,6 +44,7 @@ Route::get('/faq', function () {
     $faqPage = App\Models\Page::find(1);
     return view('faq', compact('faqPage'));
 });
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/contact', function () {
     $contactPage = App\Models\Page::find(3);
@@ -47,3 +52,6 @@ Route::get('/contact', function () {
 });
 // MAP
 Route::get('/map', 'App\Http\Controllers\MapController@showMap');
+
+
+Route::get('/', [WelcomeController::class, 'index'])->name('teachers.index');
