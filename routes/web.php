@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\TeachersController;
+
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +21,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::controller(RegisterController::class)->group(function() {
+    Route::get('/register', 'register')->name('register');
+    Route::post('/store', 'store')->name('store');
+});
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
