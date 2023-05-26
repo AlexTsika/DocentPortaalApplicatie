@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\TeachersController;
 
 use App\Http\Controllers\Auth\RegisterController;
 
@@ -35,3 +36,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // DataTable
 Route::get('/users', [UsersController::class, 'index'])->name('users.index');
+
+Route::get('/teachers', [TeachersController::class, 'index'])->name('teachers.index');
