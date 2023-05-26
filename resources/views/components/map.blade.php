@@ -12,3 +12,21 @@
 
     L.marker([latitude, longitude]).addTo(map);
 </script>
+
+    <script src="{{ asset('js/ol.js') }}"></script>
+    <script>
+        var map = new ol.Map({
+            target: 'map',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                })
+            ],
+            view: new ol.View({
+                center: ol.proj.fromLonLat([0, 0]),
+                zoom: 2
+            })
+        });
+    </script>
+</body>
+</html>
