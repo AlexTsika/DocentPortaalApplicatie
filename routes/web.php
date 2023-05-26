@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\TeachersController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -34,6 +34,7 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
+Route::get('/teacher/{id}', [SearchController::class, 'show'])->name('teacher.show');
 //pages routes
 Route::get('/about', function () {
     $aboutPage = App\Models\Page::find(2);
