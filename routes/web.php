@@ -14,9 +14,6 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::controller(RegisterController::class)->group(function() {
     Route::get('/register', 'register')->name('register');
