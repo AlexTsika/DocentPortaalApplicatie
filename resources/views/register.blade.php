@@ -17,6 +17,15 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
+                        <label for="firstname" class="col-md-4 col-form-label text-md-end text-start">Voornaam</label>
+                        <div class="col-md-6">
+                          <input type="text" class="form-control @error('firstname') is-invalid @enderror" id="firstname" name="firstname" value="{{ old('firstname') }}">
+                            @if ($errors->has('firstname'))
+                                <span class="text-danger">{{ $errors->first('firstname') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
                         <label for="email" class="col-md-4 col-form-label text-md-end text-start">Email</label>
                         <div class="col-md-6">
                           <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
@@ -26,20 +35,20 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="profession" class="col-md-4 col-form-label text-md-end text-start">Beroep</label>
+                        <label for="description" class="col-md-4 col-form-label text-md-end text-start">Beroep</label>
                         <div class="col-md-6">
-                          <input type="profession" class="form-control @error('profession') is-invalid @enderror" id="profession" name="profession" value="{{ old('profession') }}">
-                            @if ($errors->has('profession'))
-                                <span class="text-danger">{{ $errors->first('profession') }}</span>
+                          <input type="description" class="form-control @error('description') is-invalid @enderror" id="description" name="description" value="{{ old('description') }}">
+                            @if ($errors->has('description'))
+                                <span class="text-danger">{{ $errors->first('description') }}</span>
                             @endif
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="job-description" class="col-md-4 col-form-label text-md-end text-start">Beschrijving</label>
+                        <label for="remarks" class="col-md-4 col-form-label text-md-end text-start">Beschrijving</label>
                         <div class="col-md-6">
-                          <input type="job-description" class="form-control @error('job-description') is-invalid @enderror" id="job-description" name="job-description" value="{{ old('job-description') }}">
-                            @if ($errors->has('job-description'))
-                                <span class="text-danger">{{ $errors->first('job-description') }}</span>
+                          <input type="remarks" class="form-control @error('remarks') is-invalid @enderror" id="remarks" name="remarks" value="{{ old('remarks') }}">
+                            @if ($errors->has('remarks'))
+                                <span class="text-danger">{{ $errors->first('remarks') }}</span>
                             @endif
                         </div>
                     </div>
