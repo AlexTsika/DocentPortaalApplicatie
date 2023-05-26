@@ -56,3 +56,8 @@ Route::get('/map', 'App\Http\Controllers\MapController@showMap');
 
 
 Route::get('/', [WelcomeController::class, 'index'])->name('teachers.index');
+
+Route::get('/test', function(){
+    $teacher = App\Models\Teacher::with('location')->findOrFail(26);
+    dd($teacher->location->name);
+});
