@@ -47,7 +47,7 @@ class SearchController extends Controller
     public function show($id)
     {
        
-        $teacher = Teacher::findOrFail($id);
+        $teacher = \App\Models\Teacher::findOrFail($id);
 
         // You can add more custom logic here to fetch additional information related to the teacher
 
