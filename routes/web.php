@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\TeachersController;
+use App\Http\Controllers\SearchController;
 
 use App\Http\Controllers\Auth\RegisterController;
 
@@ -30,4 +30,4 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Route::get('/teachers/{id}', 'TeacherController@show')->name('teachers.show');
+Route::get('/teachers/{id}', 'SearchController@show')->name('teachers.show');
