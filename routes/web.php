@@ -3,8 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TeachersController;
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Auth\RegisterController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +20,10 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+
+// });
 
 Route::controller(RegisterController::class)->group(function() {
     Route::get('/register', 'register')->name('register');
@@ -32,9 +36,12 @@ Route::group(['prefix' => 'admin'], function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // DataTable
 Route::get('/users', [UsersController::class, 'index'])->name('users.index');
 
 Route::get('/teachers', [TeachersController::class, 'index'])->name('teachers.index');
+
+
+Route::get('/', [WelcomeController::class, 'index'])->name('teachers.index');
