@@ -45,3 +45,5 @@ Route::get('/contact', function () {
     $contactPage = App\Models\Page::find(3);
     return view('contact', compact('contactPage'));
 });
+// MAP
+Route::get('/map', 'App\Http\Controllers\MapController@showMap');
