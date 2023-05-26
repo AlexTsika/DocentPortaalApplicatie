@@ -21,5 +21,7 @@ class Teacher extends Model
         'approved',
         'location_id',
         'category_id',
+        'codecity',
+        'streetnr',
     ];
 }

@@ -93,6 +93,26 @@
                         </div>
                     </div>
 
+                    <div class="mb-3 row">
+                        <label for="streetnr" class="col-md-4 col-form-label text-md-end text-start">Straat + nummer</label>
+                        <div class="col-md-6">
+                          <input type="streetnr" class="form-control @error('streetnr') is-invalid @enderror" id="streetnr" name="streetnr" value="{{ old('streetnr') }}">
+                            @if ($errors->has('streetnr'))
+                                <span class="text-danger">{{ $errors->first('streetnr') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="codecity" class="col-md-4 col-form-label text-md-end text-start">Postcode</label>
+                        <div class="col-md-6">
+                          <input type="codecity" class="form-control @error('codecity') is-invalid @enderror" id="codecity" name="codecity" value="{{ old('codecity') }}">
+                            @if ($errors->has('codecity'))
+                                <span class="text-danger">{{ $errors->first('codecity') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
 
                     <div class="mb-3 row">
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Register">

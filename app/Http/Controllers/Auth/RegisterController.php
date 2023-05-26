@@ -50,6 +50,8 @@ class RegisterController extends Controller
             'website' => 'nullable|string',
             'location' => 'required|integer',
             'category' => 'required|integer',
+            'streetnr' => 'required|string',
+            'codecity' => 'required|string',
         ]);
     
         Teacher::create([
@@ -63,6 +65,8 @@ class RegisterController extends Controller
             'approved' => 0, // Set 'approved' field to 0 by default
             'location_id' => $request->location,
             'category_id' => $request->category,
+            'streetnr' => $request->streetnr,
+            'codecity' => $request->codecity,
         ]);
 
         Mail::send('mail.contact', $request->all(), function($message){
