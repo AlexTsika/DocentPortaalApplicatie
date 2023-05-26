@@ -18,11 +18,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller(RegisterController::class)->group(function() {
+Route::controller(RegisterController::class)->group(function () {
     Route::get('/register', 'register')->name('register');
     Route::post('/store', 'store')->name('store');
 });
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+});
+
+//pages routes
+Route::get('/about', function () {
+    $aboutPage = App\Models\Page::find(2);
+    return view('about', compact('aboutPage'));
+});
+
+Route::get('/faq', function () {
+    $faqPage = App\Models\Page::find(1);
+    return view('faq', compact('faqPage'));
+});
+
+Route::get('/contact', function () {
+    $contactPage = App\Models\Page::find(3);
+    return view('contact', compact('contactPage'));
 });
