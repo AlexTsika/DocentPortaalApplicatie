@@ -8,6 +8,8 @@ use App\Models\Location;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+
 
 
 class RegisterController extends Controller
@@ -48,6 +50,8 @@ class RegisterController extends Controller
             'website' => 'nullable|string',
             'location' => 'required|integer',
             'category' => 'required|integer',
+            'streetnr' => 'required|string',
+            'codecity' => 'required|string',
         ]);
 
 
@@ -62,6 +66,13 @@ class RegisterController extends Controller
             'approved' => 0, // Set 'approved' field to 0 by default
             'location_id' => $request->location,
             'category_id' => $request->category,
+            'streetnr' => $request->streetnr,
+            'codecity' => $request->codecity,
         ]);
+
+        Mail::send('mail.contact', $request->all(), function($message){
+            $message->to(request('email'))
+            ->subject('Bedankt voor uw registratie, '. request('firstname').'.');
+        });
     }
 }
