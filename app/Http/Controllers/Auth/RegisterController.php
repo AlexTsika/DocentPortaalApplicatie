@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Models\Teacher;
+use App\Models\Location;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -19,7 +21,13 @@ class RegisterController extends Controller
      */
     public function register()
     {
-        return view('register');
+        $location = Location::get()->all();
+        $category = Category::get()->all();
+        return view('register', [
+            'locations' => $location,
+            'categories' => $category,
+    
+    ]);
     }
 
     /**
@@ -37,7 +45,9 @@ class RegisterController extends Controller
             'description' => 'required|string|max:250',
             'remarks' => 'nullable|string|max:250',
             'phone' => 'required|string|max:9999999999',
-            'website' => 'nullable|string'
+            'website' => 'nullable|string',
+            'location' => 'required|integer',
+            'category' => 'required|integer',
         ]);
 
 
@@ -49,7 +59,9 @@ class RegisterController extends Controller
             'remarks' => $request->remarks,
             'phone' => $request->phone,
             'website' => $request->website,
-            'approved' => 0 // Set 'approved' field to 0 by default
+            'approved' => 0, // Set 'approved' field to 0 by default
+            'location_id' => $request->location,
+            'category_id' => $request->category,
         ]);
     }
 }

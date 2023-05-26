@@ -70,6 +70,30 @@
                             @endif
                         </div>
                     </div>
+
+                    <div class="mb-3 row">
+                        <label for="location" class="col-md-4 col-form-label text-md-end text-start">location</label>
+                        <div class="col-md-6">
+                            <select name="location" id="location">
+                                @foreach ($locations as $location)
+                                <option value="{{$location->id }}">{{$location->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="category" class="col-md-4 col-form-label text-md-end text-start">category</label>
+                        <div class="col-md-6">
+                            <select name="category" id="category">
+                                @foreach ($categories as $category)
+                                <option value="{{$category->id }}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+
                     <div class="mb-3 row">
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Register">
                     </div> 

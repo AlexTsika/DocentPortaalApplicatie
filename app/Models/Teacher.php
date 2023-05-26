@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Teacher extends Model
 {
     use HasFactory;
-<<<<<<< HEAD
-=======
 
     protected $fillable = [
         'lastname',
@@ -20,7 +18,8 @@ class Teacher extends Model
         'address',
         'description',
         'website',
-        'approved'
+        'approved',
+        'location_id',
+        'category_id',
     ];
->>>>>>> origin/RegisterForm
 }
