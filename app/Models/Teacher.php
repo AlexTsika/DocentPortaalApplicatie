@@ -8,11 +8,14 @@ use App\Models\Location;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Teacher extends Model
+class Teacher extends Model implements Searchable
 {
     use HasFactory;
+
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('teachers.show', $this->id);
 
         return new SearchResult(
             $this,
@@ -43,20 +46,6 @@ class Teacher extends Model
         'approved',
         'location_id',
         'category_id',
-    ];
-}
-        return new SearchResult(
-            $this,
-            $this->lastname,
-            $url
-        );
-    }
-
-    public function scopeSearch($query, $term)
-    {
-        return $query->where('lastname', 'LIKE', '%' . $term . '%');
-    }
-}
         'codecity',
         'streetnr',
     ];
