@@ -30,4 +30,4 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Route::get('/teachers/{id}', 'SearchController@show')->name('teachers.show');
+Route::get('/teacher/{id}', [SearchController::class, 'show'])->name('teacher.show');
