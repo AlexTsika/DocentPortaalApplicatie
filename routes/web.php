@@ -21,3 +21,6 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+// MAP
+Route::get('/map', 'App\Http\Controllers\MapController@showMap');
